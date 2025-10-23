@@ -2,6 +2,7 @@ package br.fiap.assistencia.tecnica.domain;
 
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.Fetch;
 
 import java.time.LocalDate;
 
@@ -13,7 +14,7 @@ public class Equipamento {
     @Column(name = "id_equip")
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn
     private Cliente cliente;
 
