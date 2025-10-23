@@ -12,7 +12,6 @@ public class Cliente {
     @Column(name = "id_cliente")
     private Long id;
 
-
     @Column(name = "nome", nullable = false, length = 120)
     private String nome;
 
