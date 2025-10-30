@@ -3,9 +3,10 @@ package br.fiap.assistencia.tecnica.domain;
 
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.Fetch;
+import lombok.Data;
 
 import java.time.LocalDate;
-
+@Data
 @Entity
 @Table(name = "java_equipamento")
 
@@ -15,7 +16,7 @@ public class Equipamento {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn
+    @JoinColumn(name = "id_cliente", foreignKey = @ForeignKey(name = "fk_equip_cliente"))
     private Cliente cliente;
 
     @Column(name = "tipo", nullable = false, length = 50)
@@ -27,8 +28,8 @@ public class Equipamento {
     @Column(name = "modelo", length = 80)
     private String modelo;
 
-    @Column(name = "numero_serie", nullable = false, length = 80)
-    private String numeroSserie;
+    @Column(name = "numero_serie", length = 80,unique = true)
+    private String numeroSerie;
 
     @Column(name = "data_cadastro", nullable = false)
     private LocalDate dataCadastro;
